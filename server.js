@@ -14,7 +14,10 @@ const db = config.get('mongoURI')
 
 // Connect to Mongo
 mongoose
-  .connect(db, { useNewUrlParser: true, useCreateIndex: true })
+  .connect('mongodb://localhost/mern_shopping_list', {
+    useNewUrlParser: true,
+    useCreateIndex: true
+  })
   .then(() => console.log('MongoDB Atlas connected...'))
   .catch(err => console.log(err))
 
