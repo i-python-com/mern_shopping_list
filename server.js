@@ -14,7 +14,7 @@ const db = config.get('mongoURI')
 
 // Connect to Mongo
 mongoose
-  .connect('mongodb://localhost/mern_shopping_list', {
+  .connect(db, {
     useNewUrlParser: true,
     useCreateIndex: true
   })

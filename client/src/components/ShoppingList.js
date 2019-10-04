@@ -1,19 +1,23 @@
 import React, { Component } from 'react'
-import { Container, ListGroup, ListGroupItem, Button } from 'reactstrap'
-import { CSSTransition, TransitionGroup } from 'react-transition-group'
+import { Container, Button, Table } from 'reactstrap'
 import { connect } from 'react-redux'
 import { getItems, deleteItem } from '../actions/itemActions'
+import { loadUser } from '../actions/authActions'
 import PropTypes from 'prop-types'
+import Spinner from './Spinner'
 
 class ShoppingList extends Component {
   static propTypes = {
     getItems: PropTypes.func.isRequired,
+    deleteItem: PropTypes.func.isRequired,
     item: PropTypes.object.isRequired,
-    isAuthenticated: PropTypes.bool
+    auth: PropTypes.object.isRequired,
+    loadUser: PropTypes.func.isRequired
   }
 
   componentDidMount() {
     this.props.getItems()
+    this.props.loadUser()
   }
 
   onDeleteClick = id => {
@@ -22,31 +26,45 @@ class ShoppingList extends Component {
 
   render() {
     const { items } = this.props.item
+    const { isAuthenticated, user } = this.props.auth
 
     return (
       <Container>
-        <ListGroup>
-          <TransitionGroup className="shopping-list">
-            {items.map(({ _id, name }) => (
-              <CSSTransition key={_id} timeout={500} classNames="fade">
-                <ListGroupItem>
-                  {this.props.isAuthenticated ? (
-                    <Button
-                      className="remove-btn"
-                      color="danger"
-                      sieze="sm"
-                      onClick={this.onDeleteClick.bind(this, _id)}
-                    >
-                      &times;
-                    </Button>
-                  ) : null}
-
-                  {name}
-                </ListGroupItem>
-              </CSSTransition>
-            ))}
-          </TransitionGroup>
-        </ListGroup>
+        <Table striped bordered>
+          <thead>
+            <tr>
+              <th>#</th>
+              <th>Item</th>
+              <th>User</th>
+              <th>Delete</th>
+            </tr>
+          </thead>
+          <tbody>
+            {items && user ? (
+              items.map((item, index) => (
+                <tr key={index}>
+                  <th scope="row">{index + 1}</th>
+                  <td>{item.name}</td>
+                  <td>{item.user.name}</td>
+                  <td>
+                    {isAuthenticated && item.user.name === user.name ? (
+                      <Button
+                        className="remove-btn"
+                        color="danger"
+                        size="sm"
+                        onClick={this.onDeleteClick.bind(this, item._id)}
+                      >
+                        &times;
+                      </Button>
+                    ) : null}
+                  </td>
+                </tr>
+              ))
+            ) : (
+              <Spinner />
+            )}
+          </tbody>
+        </Table>
       </Container>
     )
   }
@@ -54,10 +72,10 @@ class ShoppingList extends Component {
 
 const mapStateToProps = state => ({
   item: state.item,
-  isAuthenticated: state.auth.isAuthenticated
+  auth: state.auth
 })
 
 export default connect(
   mapStateToProps,
-  { getItems, deleteItem }
+  { getItems, deleteItem, loadUser }
 )(ShoppingList)

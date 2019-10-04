@@ -6,6 +6,7 @@ import {
   NavbarBrand,
   Nav,
   NavItem,
+  NavLink,
   Container
 } from 'reactstrap'
 import { connect } from 'react-redux'
@@ -36,7 +37,14 @@ class AppNavbar extends Component {
       <Fragment>
         <NavItem>
           <span className="navbar-text mr-3">
-            <strong>{user ? `Welcome ${user.name}` : ''}</strong>
+            {user ? (
+              <Fragment>
+                Welcome{' '}
+                <span className="text-white font-weight-bold">{user.name}</span>
+              </Fragment>
+            ) : (
+              ''
+            )}
           </span>
         </NavItem>
         <NavItem>
@@ -65,6 +73,14 @@ class AppNavbar extends Component {
             <Collapse isOpen={this.state.isOpen} navbar>
               <Nav className="ml-auto" navbar>
                 {isAuthenticated ? authLinks : guestLinks}
+                <NavItem>
+                  <NavLink
+                    target="_blank"
+                    href="https://github.com/i-python-com"
+                  >
+                    GitHub
+                  </NavLink>
+                </NavItem>
               </Nav>
             </Collapse>
           </Container>

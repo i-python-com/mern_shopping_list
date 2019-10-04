@@ -10,6 +10,7 @@ const Item = require('../../models/Item')
 // @access Pbulic
 router.get('/', (req, res) => {
   Item.find()
+    .populate('user', ['name'])
     .sort({ date: -1 })
     .then(items => res.json(items))
 })
@@ -31,7 +32,12 @@ router.post('/', auth, (req, res) => {
 // @access Private
 router.delete('/:id', auth, (req, res) => {
   Item.findById(req.params.id)
-    .then(item => item.remove().then(() => res.json({ success: true })))
+    .then(item => {
+      if (item.user.toString() !== req.user.id) {
+        return res.status(401).json({ msg: 'User is not authorized' })
+      }
+      item.remove().then(() => res.json({ success: true }))
+    })
     .catch(err => res.status(404).json({ success: false }))
 })
 
