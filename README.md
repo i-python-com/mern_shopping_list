@@ -8,22 +8,22 @@ Password: 123456
 
 ### Homepage without login
 
-<a href="https://ibb.co/XDZwBhS"><img src="https://i.ibb.co/3vyJXDB/1-homepage-without-login.jpg" alt="1-homepage-without-login" border="0"></a>
+<img src="https://i.ibb.co/kJgdnRQ/1-homepage-without-login.jpg" alt="1-homepage-without-login" border="0">
 <br><br>
 
 ### Login modal
 
-<a href="https://ibb.co/XjPxchV"><img src="https://i.ibb.co/wBqh59Y/2-login.jpg" alt="2-login" border="0"></a>
+<img src="https://i.ibb.co/8Nwg1WX/2-login.jpg" alt="2-login" border="0">
 <br><br>
 
 ### Homepage after login
 
-<a href="https://ibb.co/gwt6DX5"><img src="https://i.ibb.co/92yGqfF/11-homepage.jpg" alt="11-homepage" border="0"></a>
+<img src="https://i.ibb.co/5vs25zN/11-homepage.jpg" alt="11-homepage" border="0">
 <br><br>
 
 ### Login user add item
 
-<a href="https://ibb.co/8b5G5Lb"><img src="https://i.ibb.co/Jq787wq/12-Add-item.jpg" alt="12-Add-item" border="0"></a>
+<img src="https://i.ibb.co/LrtBtXr/12-Add-item.jpg" alt="12-Add-item" border="0">
 
 # Tech Stack
 
