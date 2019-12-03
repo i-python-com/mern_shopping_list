@@ -4,27 +4,6 @@ Login Email: test@gmail.com
 
 Password: 123456
 
-# What does it look like?
-
-### Homepage without login
-
-<img src="https://i.ibb.co/kJgdnRQ/1-homepage-without-login.jpg" alt="1-homepage-without-login" border="0">
-<br><br>
-
-### Login modal
-
-<img src="https://i.ibb.co/8Nwg1WX/2-login.jpg" alt="2-login" border="0">
-<br><br>
-
-### Homepage after login
-
-<img src="https://i.ibb.co/5vs25zN/11-homepage.jpg" alt="11-homepage" border="0">
-<br><br>
-
-### Login user add item
-
-<img src="https://i.ibb.co/LrtBtXr/12-Add-item.jpg" alt="12-Add-item" border="0">
-
 # Tech Stack
 
 1. MongoDB

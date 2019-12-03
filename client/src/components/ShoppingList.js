@@ -40,29 +40,27 @@ class ShoppingList extends Component {
             </tr>
           </thead>
           <tbody>
-            {items && user ? (
-              items.map((item, index) => (
-                <tr key={index}>
-                  <th scope="row">{index + 1}</th>
-                  <td>{item.name}</td>
-                  <td>{item.user.name}</td>
-                  <td>
-                    {isAuthenticated && item.user.name === user.name ? (
-                      <Button
-                        className="remove-btn"
-                        color="danger"
-                        size="sm"
-                        onClick={this.onDeleteClick.bind(this, item._id)}
-                      >
-                        &times;
-                      </Button>
-                    ) : null}
-                  </td>
-                </tr>
-              ))
-            ) : (
-              <Spinner />
-            )}
+            {items && user
+              ? items.map((item, index) => (
+                  <tr key={index}>
+                    <th scope="row">{index + 1}</th>
+                    <td>{item.name}</td>
+                    <td>{item.user.name}</td>
+                    <td>
+                      {isAuthenticated && item.user.name === user.name ? (
+                        <Button
+                          className="remove-btn"
+                          color="danger"
+                          size="sm"
+                          onClick={this.onDeleteClick.bind(this, item._id)}
+                        >
+                          &times;
+                        </Button>
+                      ) : null}
+                    </td>
+                  </tr>
+                ))
+              : null}
           </tbody>
         </Table>
       </Container>
